@@ -1,12 +1,12 @@
 import mongoose from "mongoose"
 
-const postSchema = mongoose.Schema({
+const schemaScholar = mongoose.Schema({
     title: String,
     desc: String,
     body: String,
     author: String,
     file: String,
-    tags: [String],
+    tags: [ String ],
     view: {
         type: Number,
         default: 0
@@ -17,6 +17,6 @@ const postSchema = mongoose.Schema({
     }
 })
 
-const PostScholar = mongoose.model('PostScholar', postSchema)
+const SchemaScholar = mongoose.model('SchemaScholar', schemaScholar)
 
-export default PostScholar
+export default SchemaScholar
