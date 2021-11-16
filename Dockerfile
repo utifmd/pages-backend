@@ -1,15 +1,24 @@
 FROM node:latest
 
-RUN mkdir -p /usr/src/app
+RUN mkdir -p ./var/www/html/personal-backend
 
-WORKDIR /usr/src/app
+WORKDIR ./var/www/html/personal-backend
 
-COPY package*.json ./
+COPY ./package*.json ./
 
 RUN npm install
+
+CMD npm start
 
 COPY . .
 
 EXPOSE 5000
 
-CMD [ "npm", "start"]
+# FROM node:latest
+# RUN mkdir -p /usr/src/app
+# WORKDIR /usr/src/app
+# COPY package*.json ./
+# RUN npm install
+# COPY . .
+# EXPOSE 5000
+# CMD [ "npm", "start"]
