@@ -91,7 +91,7 @@ Response:
 ```
 ### Update Scholars
 Request:
-- Method: PUT
+- Method: PATCH
 - Endpoint: `/scholars/{scholarId}`
 - Header:
     - Content-Type: application/json
@@ -199,7 +199,7 @@ Response:
 ```
 ### Update Projects
 Request:
-- Method: PUT
+- Method: PATCH
 - Endpoint: `/projects/{projectId}`
 - Header:
     - Content-Type: application/json
