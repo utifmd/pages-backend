@@ -5,8 +5,8 @@ const schemaProject = mongoose.Schema({
     description: String,
     kind: String,
     stack: [ String ],
-    icon: String,
-    screenshot: [ String ],
+    iconUrl: String,
+    fileUrl: [ String ],
     source: String,
     view: {
         type: Number,

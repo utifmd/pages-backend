@@ -6,7 +6,7 @@ const schemaScholar = mongoose.Schema({
     body: String,
     author: String,
     source: String,
-    file: String,
+    fileUrl: String,
     tags: [ String ],
     view: {
         type: Number,
