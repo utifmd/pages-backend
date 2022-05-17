@@ -29,22 +29,27 @@ export const signIn = async (req, resp) => {
         if(!existingUser) 
             return resp.status(404).json({message: `User doesn't exist.`})
 
-        // const activeUser = existingUser.invalidAttempt <= 5
+        bcryptjs.compare(password, existingUser.password, 
+            async (err, isMatch) => {
 
-        // if(!activeUser)
-        //     return resp.status(404).json({message: `User was blocked.`})
-
-        const isPasswordCorrect = await bcryptjs.compare(password, existingUser.password)
-
-        if(!isPasswordCorrect) {
-            await SchemaUser.findOneAndUpdate({"email": email}, { $inc: { 
-                "invalidAttempt": 1
-            }})
-
-            return resp.status(403).json({message: `Invalid creadentials.`})
-        }
-        
-        resp.status(200).json({result: existingUser})
+            if (isMatch) {
+                console.log('Encrypted password is: ', password);
+                console.log('Decrypted password');
+                // await SchemaUser.findOneAndUpdate({"email": email}, { $inc: { 
+                //     "invalidAttempt": 1
+                // }})
+    
+                resp.status(200).json({result: existingUser})
+            }
+            
+            if (!isMatch) {
+                
+                // If password doesn't match the following
+                // message will be sent
+                console.log(' is not encryption of ' + password);
+                resp.status(403).json({message: `Invalid creadentials.`})
+            }
+        })
     } catch (error) {
 
         resp.status(404).json({message: `Something went wrong.`})
